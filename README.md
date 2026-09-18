@@ -1,5 +1,7 @@
 # ⚖️ RegulAIte — AI-Driven Corporate Legal Document Auditor
 
+## 🌐 Live Demo: https://regulaite.shashankj.tech
+
 RegulAIte is a state-of-the-art corporate legal document auditor and risk-mitigation system. Built on a modular, high-performance architecture, it combines a **FastAPI backend** running an advanced **5-Agent AI Orchestration pipeline** with a **Z3 Constraint Solver** logic validation engine, a **Vector RAG Memory** subsystem, and a **rich, interactive Streamlit frontend** dashboard.
 
 Whether running dynamically against live cloud LLM providers or executing in local offline fallback sandbox environments, RegulAIte offers bulletproof stability, comprehensive audits, and seamless micro-animated legal intelligence.
