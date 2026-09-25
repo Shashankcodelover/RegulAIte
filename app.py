@@ -1,5 +1,66 @@
 # pyrefly: ignore [missing-import]
 import streamlit as st
+
+st.set_page_config(
+    page_title="RegulAIte - Prism Glass",
+    page_icon="🔮",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+st.markdown("""
+<style>
+/* Prism Glass Background & Ambient Radiance */
+.stApp {
+    background-color: #060B18 !important;
+    background-image: 
+        radial-gradient(circle at 10% 15%, rgba(56, 189, 248, 0.14) 0%, transparent 40%),
+        radial-gradient(circle at 85% 18%, rgba(129, 140, 248, 0.14) 0%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(52, 211, 153, 0.11) 0%, transparent 45%);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #FFFFFF !important;
+}
+
+/* Glassmorphic Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: rgba(11, 20, 42, 0.7) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Glassmorphic Cards */
+div[data-testid="stExpander"], div[data-testid="stForm"], div.css-1r6slb0 {
+    background-color: rgba(11, 20, 42, 0.85) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 1.25rem !important;
+}
+
+/* Typography Gradient */
+h1, h2, h3 {
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Cyber Primary Buttons */
+button[kind="primary"] {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    border: 1px solid rgba(56, 189, 248, 0.5) !important;
+    border-radius: 8px !important;
+    color: white !important;
+}
+button[kind="primary"]:hover {
+    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4) !important;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+</style>
+""", unsafe_allow_html=True)
+
 from dotenv import load_dotenv
 load_dotenv()
 import time
@@ -367,7 +428,7 @@ def generate_rewrite_pdf(clauses_data, user_name="General Counsel", filename="Co
         textColor=colors.HexColor('#166534'), alignment=TA_JUSTIFY)
     strike_label_style = ParagraphStyle('StrikeLabel', parent=styles['Normal'],
         fontSize=8, fontName='Helvetica-Bold', spaceAfter=2,
-        textColor=colors.HexColor('#b91c1c'))
+        textColor=colors.HexColor('#f87171'))
     strike_style = ParagraphStyle('Strike', parent=styles['Normal'],
         fontSize=8.5, fontName='Helvetica', leading=13, spaceAfter=12,
         textColor=colors.HexColor('#9ca3af'))
@@ -1697,7 +1758,7 @@ if not st.session_state.get("authenticated", False):
         .block-container {
             max-width: 560px !important;
             margin: 0 auto !important;
-            padding-top: 2rem !important;
+            padding-top: 1rem !important;
             padding-left: 1rem !important;
             padding-right: 1rem !important;
         }
@@ -1725,9 +1786,9 @@ if not st.session_state.get("authenticated", False):
         
         /* Input fields - black text on white inputs for perfect visibility */
         .stTextInput input, .stTextArea textarea {
-            background: #ffffff !important;
-            border: 1px solid #cbd5e1 !important;
-            color: #0f172a !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
             border-radius: 8px !important;
         }
         .stTextInput input::placeholder, .stTextArea textarea::placeholder {
@@ -1740,9 +1801,9 @@ if not st.session_state.get("authenticated", False):
         
         /* Selectbox - black text on white container */
         .stSelectbox > div > div {
-            background: #ffffff !important;
-            border: 1px solid #cbd5e1 !important;
-            color: #0f172a !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
             border-radius: 8px !important;
         }
         
@@ -1820,7 +1881,7 @@ if not st.session_state.get("authenticated", False):
         width: 100vw;
         height: 60px;
         background: #0f1115;
-        z-index: 999999;
+        z-index: 9999;
         align-items: center;
         justify-content: space-between;
         padding: 0 15px;
@@ -2265,11 +2326,11 @@ button[data-testid="collapsedSidebarIconButton"]:hover {
 }
 /* Push main content below the header */
 .block-container {
-    padding-top: 2.5rem !important;
+    padding-top: 1.5rem !important;
 }
 /* Override the 1.5rem padding we set later for desktop */
 @media screen and (min-width: 769px) {
-    .block-container { padding-top: 2rem !important; }
+    .block-container { padding-top: 1rem !important; }
 }
 
 /* Global styling */
@@ -2277,10 +2338,7 @@ html, body, [class*="css"] {
     font-family: 'Inter', sans-serif !important;
 }
 
-.stApp {
-    background: #f4f5f7 !important;
-    color: #111827 !important;
-}
+/* .stApp inherited from Prism Glass in head */
 
 /* Fix chat message text color for light theme */
 [data-testid="stChatMessageContent"] p,
@@ -2291,9 +2349,9 @@ html, body, [class*="css"] {
 /* Minimize main padding */
 .block-container {
     padding-top: 1.5rem !important;
-    padding-bottom: 2rem !important;
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+    padding-bottom: 1rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
     max-width: 1440px !important;
 }
 
@@ -2303,7 +2361,7 @@ html, body, [class*="css"] {
     border-right: none !important;
 }
 [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
-    color: #8b949e;
+    color: #d1d5db;
 }
 
 /* Custom Sidebar CSS */
@@ -2320,7 +2378,9 @@ html, body, [class*="css"] {
     padding: 0 4px;
 }
 .logo-box {
-    background: #ffffff;
+    background: rgba(11, 20, 42, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-radius: 6px;
     width: 26px;
     height: 26px;
@@ -2337,19 +2397,19 @@ html, body, [class*="css"] {
     font-weight: 600;
 }
 .collapse-icon {
-    color: #4b5563;
+    color: #cbd5e1;
     font-size: 1rem;
     cursor: pointer;
     transition: color 0.2s;
 }
 .collapse-icon:hover {
-    color: #9ca3af;
+    color: #6b7280;
 }
 .sidebar-section-title {
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.08em;
-    color: #4b5563;
+    color: #cbd5e1;
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
@@ -2373,8 +2433,8 @@ html, body, [class*="css"] {
     background: rgba(255, 255, 255, 0.05);
 }
 .sidebar-nav-item.active {
-    background: #ffffff !important;
-    color: #111827 !important;
+    background: rgba(56, 189, 248, 0.15) !important;
+    color: #38bdf8 !important;
     font-weight: 600;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -2403,19 +2463,24 @@ html, body, [class*="css"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #ffffff;
+    background: rgba(11, 20, 42, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     padding: 12px 24px;
     border-radius: 12px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-    border: 1px solid #e5e7eb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .header-title {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #111827;
+    color: #ffffff;
     margin: 0 !important;
 }
 .search-bar-container {
+    z-index: 10;
     position: relative;
     width: 320px;
 }
@@ -2424,23 +2489,30 @@ html, body, [class*="css"] {
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: #9ca3af;
+    color: #6b7280;
     font-size: 0.85rem;
 }
 .search-input {
     width: 100%;
     padding: 8px 12px 8px 32px;
     border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    background: #f9fafb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
     font-size: 0.85rem;
-    color: #111827;
+    color: #ffffff;
     outline: none;
     transition: all 0.2s;
 }
+.search-input:hover {
+    border-color: #93c5fd;
+}
 .search-input:focus {
+    outline: none;
+
     border-color: #3b82f6;
-    background: #ffffff;
+    background: rgba(11, 20, 42, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
 .header-actions {
@@ -2449,11 +2521,13 @@ html, body, [class*="css"] {
     gap: 14px;
 }
 .action-btn {
+    position: relative;
+    z-index: 10;
     background: transparent;
     border: none;
     cursor: pointer;
     font-size: 1.1rem;
-    color: #4b5563;
+    color: #cbd5e1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2461,14 +2535,17 @@ html, body, [class*="css"] {
     border-radius: 4px;
     transition: all 0.2s;
 }
-.action-btn:hover {
-    color: #111827;
+.action-btn:hover,
+.action-btn:focus {
+    outline: 2px solid #3b82f6; outline-offset: 2px;
+    color: #ffffff;
     background: #f3f4f6;
 }
 .action-btn.relative {
     position: relative;
 }
 .badge-dot {
+    z-index: 20;
     position: absolute;
     top: 2px;
     right: 2px;
@@ -2483,7 +2560,7 @@ html, body, [class*="css"] {
     height: 28px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid #e5e7eb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Dashboard Grid Layout */
@@ -2506,11 +2583,13 @@ html, body, [class*="css"] {
 
 /* Custom Cards */
 .card {
-    background: #ffffff;
+    background: rgba(11, 20, 42, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-radius: 14px;
-    padding: 1.5rem;
+    padding: 1rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-    border: 1px solid #f0f1f3;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     flex-direction: column;
 }
@@ -2523,21 +2602,21 @@ html, body, [class*="css"] {
 .card-title {
     font-size: 1.05rem;
     font-weight: 600;
-    color: #111827;
+    color: #ffffff;
     margin: 0 !important;
 }
 .card-actions {
-    color: #9ca3af;
+    color: #6b7280;
     font-size: 0.9rem;
     cursor: pointer;
     transition: color 0.2s;
 }
 .card-actions:hover {
-    color: #4b5563;
+    color: #cbd5e1;
 }
 .card-subtitle {
     font-size: 0.75rem;
-    color: #9ca3af;
+    color: #6b7280;
     margin-bottom: 0.75rem;
     margin-top: -0.75rem;
 }
@@ -2546,8 +2625,8 @@ html, body, [class*="css"] {
 .pdf-row {
     display: flex;
     align-items: center;
-    background: #fafafa;
-    border: 1px solid #f3f4f6;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     padding: 12px;
     gap: 12px;
@@ -2563,7 +2642,7 @@ html, body, [class*="css"] {
 .pdf-name {
     font-size: 0.85rem;
     font-weight: 500;
-    color: #111827;
+    color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2571,7 +2650,7 @@ html, body, [class*="css"] {
 }
 .pdf-meta {
     font-size: 0.7rem;
-    color: #9ca3af;
+    color: #6b7280;
     margin-top: 2px;
 }
 .pdf-actions {
@@ -2580,12 +2659,12 @@ html, body, [class*="css"] {
 }
 .action-icon {
     font-size: 0.95rem;
-    color: #9ca3af;
+    color: #6b7280;
     cursor: pointer;
     transition: color 0.2s;
 }
 .action-icon:hover {
-    color: #4b5563;
+    color: #cbd5e1;
 }
 
 /* Metadata List */
@@ -2601,10 +2680,10 @@ html, body, [class*="css"] {
     font-size: 0.825rem;
 }
 .meta-label {
-    color: #9ca3af;
+    color: #6b7280;
 }
 .meta-value {
-    color: #111827;
+    color: #ffffff;
     font-weight: 500;
 }
 
@@ -2623,7 +2702,7 @@ html, body, [class*="css"] {
     font-size: 0.8rem;
 }
 .progress-label {
-    color: #4b5563;
+    color: #cbd5e1;
     font-weight: 500;
 }
 .progress-value {
@@ -2645,7 +2724,7 @@ html, body, [class*="css"] {
 .stage-tag {
     align-self: flex-start;
     background: #f3f4f6;
-    color: #4b5563;
+    color: #cbd5e1;
     font-size: 0.72rem;
     padding: 3px 8px;
     border-radius: 12px;
@@ -2710,11 +2789,13 @@ html, body, [class*="css"] {
     gap: 1rem;
 }
 .kpi-card {
-    background: #ffffff;
+    background: rgba(11, 20, 42, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-radius: 12px;
     padding: 1.25rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-    border: 1px solid #f0f1f3;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -2734,7 +2815,7 @@ html, body, [class*="css"] {
 .kpi-val {
     font-size: 1.85rem;
     font-weight: 600;
-    color: #111827;
+    color: #ffffff;
     line-height: 1;
 }
 .kpi-trend {
@@ -2756,7 +2837,7 @@ html, body, [class*="css"] {
 
 /* Chart styling */
 .chart-card {
-    padding: 1.5rem;
+    padding: 1rem;
 }
 .chart-header {
     display: flex;
@@ -2774,7 +2855,7 @@ html, body, [class*="css"] {
     padding: 4px 10px;
     border-radius: 12px;
     cursor: pointer;
-    border: 1px solid #e5e7eb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: #6b7280;
     transition: all 0.2s;
 }
@@ -2795,7 +2876,7 @@ html, body, [class*="css"] {
 
 /* Relevant Cases Table styling */
 .table-card {
-    padding: 1.5rem;
+    padding: 1rem;
 }
 .cases-table {
     width: 100%;
@@ -2806,14 +2887,14 @@ html, body, [class*="css"] {
     text-align: left;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #9ca3af;
+    color: #6b7280;
     padding: 8px 12px;
     border-bottom: 1px solid #f3f4f6;
 }
 .cases-table td {
     padding: 12px;
     font-size: 0.825rem;
-    color: #374151;
+    color: #e2e8f0;
     border-bottom: 1px solid #f9fafb;
 }
 .cases-table tr:last-child td {
@@ -2821,7 +2902,7 @@ html, body, [class*="css"] {
 }
 .cases-table tr td:first-child {
     font-weight: 500;
-    color: #111827;
+    color: #ffffff;
 }
 .outcome-pill {
     font-size: 0.72rem;
@@ -2849,7 +2930,7 @@ html, body, [class*="css"] {
     padding: 4px;
     border-radius: 10px;
     margin-bottom: 1.5rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     max-width: 500px;
 }
 .custom-tab {
@@ -2867,7 +2948,9 @@ html, body, [class*="css"] {
     color: #111827 !important;
 }
 .custom-tab.active {
-    background: #ffffff;
+    background: rgba(11, 20, 42, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     color: #111827 !important;
     font-weight: 600;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -2886,7 +2969,7 @@ html, body, [class*="css"] {
 
 /* Expanders override */
 .streamlit-expanderHeader {
-    background: #ffffff !important;
+    background: rgba(255, 255, 255, 0.05); !important;
     border: 1px solid #f0f1f3 !important;
     border-radius: 12px !important;
     font-weight: 600 !important;
@@ -2895,7 +2978,7 @@ html, body, [class*="css"] {
     margin-bottom: 0.5rem;
 }
 .streamlit-expanderContent {
-    background: #ffffff !important;
+    background: rgba(255, 255, 255, 0.05); !important;
     border: 1px solid #f0f1f3 !important;
     border-top: none !important;
     border-radius: 0 0 12px 12px !important;
@@ -2904,16 +2987,18 @@ html, body, [class*="css"] {
 
 /* Custom styles for cases and search pages */
 .subpage-container {
-    background: #ffffff;
+    background: rgba(11, 20, 42, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-radius: 14px;
     padding: 2rem;
-    border: 1px solid #f0f1f3;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 1px 3px rgba(0,0,0,0.02);
 }
 .subpage-title {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #111827;
+    color: #ffffff;
     margin-bottom: 1.5rem;
 }
 .search-results-list {
@@ -2923,15 +3008,17 @@ html, body, [class*="css"] {
     margin-top: 1.5rem;
 }
 .search-card {
-    background: #fafafa;
-    border: 1px solid #e5e7eb;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 1.25rem;
     transition: all 0.2s;
 }
 .search-card:hover {
     border-color: #3b82f6;
-    background: #ffffff;
+    background: rgba(11, 20, 42, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 .search-card-header {
@@ -2943,7 +3030,7 @@ html, body, [class*="css"] {
 .search-card-title {
     font-size: 0.95rem;
     font-weight: 600;
-    color: #111827;
+    color: #ffffff;
 }
 .search-card-score {
     font-size: 0.75rem;
@@ -2955,12 +3042,12 @@ html, body, [class*="css"] {
 }
 .search-card-content {
     font-size: 0.85rem;
-    color: #4b5563;
+    color: #cbd5e1;
     line-height: 1.5;
 }
 .search-card-meta {
     font-size: 0.72rem;
-    color: #9ca3af;
+    color: #6b7280;
     margin-top: 10px;
     border-top: 1px solid #f3f4f6;
     padding-top: 8px;
@@ -3206,6 +3293,7 @@ html, body, [class*="css"] {
         font-size: 1.1rem !important;
     }
     .search-bar-container {
+    z-index: 10;
         width: 100% !important;
     }
     .header-actions {
@@ -3489,7 +3577,7 @@ with st.sidebar:
             background: rgba(255, 255, 255, 0.45);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            z-index: 999999;
+            z-index: 9999;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -3508,7 +3596,7 @@ with st.sidebar:
                 <div class="glass-title" style="color: #1e3a8a !important; font-size: 1.3rem !important; margin-bottom: 0.5rem !important; justify-content: center; font-weight: 700; display: flex; align-items: center; gap: 8px;">
                     🤖 RegulAIte Multi-Agent Scan
                 </div>
-                <div style="font-size: 0.85rem; color: #4b5563; line-height: 1.5; margin-bottom: 1.5rem;">
+                <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 1.5rem;">
                     AI agents are red-teaming your contract clauses, scanning for liability traps, and compiling your compliance audit...
                 </div>
                 <div style="
@@ -3948,7 +4036,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
         
         if show_upload_panel:
             st.markdown(f"""
-            <div style="background:#ffffff; border:1px solid #e5e7eb; border-radius:14px; padding:1.5rem; margin-bottom:1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+            <div style="background: rgba(255, 255, 255, 0.05); border:1px solid #e5e7eb; border-radius:14px; padding:1.5rem; margin-bottom:1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
                     <div style="display:flex; align-items:center; gap:8px;">
                         <span style="font-size:1.3rem;">📤</span>
@@ -4247,7 +4335,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
                 for a in _alerts
             ])
             st.markdown(f"""
-            <div style="background:#ffffff; border:1px solid #e5e7eb; border-radius:14px; padding:1.5rem; margin-bottom:1.25rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+            <div style="background: rgba(255, 255, 255, 0.05); border:1px solid #e5e7eb; border-radius:14px; padding:1.5rem; margin-bottom:1.25rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
                     <div style="display:flex; align-items:center; gap:8px;">
                         <span style="font-size:1.3rem;">🔔</span>
@@ -4299,7 +4387,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
                 
             # Render full paper mockup
             st.markdown("""
-            <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:3rem; box-shadow:0 10px 25px rgba(0,0,0,0.03); max-width:850px; margin:0 auto; font-family:'Georgia', serif; color:#1f2937; line-height:1.7;">
+            <div style="background: rgba(255, 255, 255, 0.05); border:1px solid #e2e8f0; border-radius:12px; padding:3rem; box-shadow:0 10px 25px rgba(0,0,0,0.03); max-width:850px; margin:0 auto; font-family:'Georgia', serif; color:#1f2937; line-height:1.7;">
                 <div style="text-align:center; margin-bottom:2.5rem; border-bottom:2px solid #e2e8f0; padding-bottom:1.5rem;">
                     <h1 style="font-family:'Inter', sans-serif; font-size:1.6rem; font-weight:800; color:#1e3a8a; text-transform:uppercase; letter-spacing:0.05em; margin:0 0 0.5rem 0;">MUTUAL SERVICES AGREEMENT</h1>
                     <div style="font-family:'Inter', sans-serif; font-size:0.75rem; font-weight:700; color:#10b981; text-transform:uppercase; letter-spacing:0.1em; display:flex; align-items:center; justify-content:center; gap:4px;">
@@ -4317,7 +4405,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
                             ✨ {cl["title"]} (HEALED & NEUTRAL REWRITE INTEGRATED)
                         </div>
                         <div style="font-size: 0.92rem; color: #166534; font-weight: 500; font-family: 'Georgia', serif; line-height: 1.6; white-space: pre-wrap;">{cl["rewrite"]}</div>
-                        <div style="font-family:'Inter', sans-serif; font-size:0.75rem; color:#b91c1c; margin-top:8px; border-top:1px dashed rgba(220,38,38,0.25); padding-top:6px;">
+                        <div style="font-family:'Inter', sans-serif; font-size:0.75rem; color:#f87171; margin-top:8px; border-top:1px dashed rgba(220,38,38,0.25); padding-top:6px;">
                             <b>🚨 Struck-Through Predatory Loophole:</b> <span style="text-decoration: line-through; opacity: 0.6;">{cl["text"]}</span>
                         </div>
                     </div>
@@ -4328,7 +4416,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
                         <div style="font-family:'Inter', sans-serif; font-weight: 700; font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 6px;">
                             {cl["title"]}
                         </div>
-                        <div style="font-size: 0.92rem; color: #374151; font-family: 'Georgia', serif; line-height: 1.6; white-space: pre-wrap;">{cl["text"]}</div>
+                        <div style="font-size: 0.92rem; color: #e2e8f0; font-family: 'Georgia', serif; line-height: 1.6; white-space: pre-wrap;">{cl["text"]}</div>
                     </div>
                     """, unsafe_allow_html=True)
                     
@@ -4477,7 +4565,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
             </script>
 
             <!-- Project Pitch Deck Showcase Card -->
-            <div class="card" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #3b82f6; padding: 1.5rem; border-radius: 14px; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border-top: 1px solid #bfdbfe; border-right: 1px solid #bfdbfe; border-bottom: 1px solid #bfdbfe;">
+            <div class="card" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #3b82f6; padding: 1rem; border-radius: 14px; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border-top: 1px solid #bfdbfe; border-right: 1px solid #bfdbfe; border-bottom: 1px solid #bfdbfe;">
                 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem;">
                     
                     <!-- Left: Core Concept & Problem Statement -->
@@ -4620,7 +4708,9 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
                     </div>
 
                     <!-- Reciprocity Advantage Meter -->
-                    <div class="card" style="text-align: center; padding: 1.25rem; border-radius: 12px; background: #ffffff; border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div class="card" style="text-align: center; padding: 1.25rem; border-radius: 12px; background: rgba(11, 20, 42, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px); border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                         <div style="font-weight: 700; font-size: 0.85rem; color: #1e3a8a; margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px; justify-content: center;">
                             ⚖️ Reciprocity Advantage Meter
                         </div>
@@ -4917,9 +5007,9 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
         # Draw the line-by-line contract reader container
         for idx, cl in enumerate(clauses):
             border_style = "border-left: 5px solid #ef4444;" if cl["risk"] else "border-left: 3px solid #10b981;"
-            bg_color = "background: #fef2f2;" if cl["risk"] else "background: #ffffff;"
-            title_color = "#b91c1c" if cl["risk"] else "#047857"
-            badge_html = '<span style="font-size:0.68rem; font-weight:700; background:#fee2e2; color:#b91c1c; padding:2px 8px; border-radius:10px; border:1px solid #fca5a5; display:inline-block; margin-left:8px;">🚨 LOOPHOLE IDENTIFIED</span>' if cl["risk"] else '<span style="font-size:0.68rem; font-weight:700; background:#d1fae5; color:#065f46; padding:2px 8px; border-radius:10px; border:1px solid #a7f3d0; display:inline-block; margin-left:8px;">🟢 MUTUAL / NEUTRAL</span>'
+            bg_color = "background: rgba(239, 68, 68, 0.15);" if cl["risk"] else "background: rgba(11, 20, 42, 0.65); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);"
+            title_color = "#f87171" if cl["risk"] else "#34d399"
+            badge_html = '<span style="font-size:0.68rem; font-weight:700; background: rgba(239, 68, 68, 0.2); color:#f87171; padding:2px 8px; border-radius:10px; border:1px solid #fca5a5; display:inline-block; margin-left:8px;">🚨 LOOPHOLE IDENTIFIED</span>' if cl["risk"] else '<span style="font-size:0.68rem; font-weight:700; background: rgba(16, 185, 129, 0.2); color:#065f46; padding:2px 8px; border-radius:10px; border:1px solid #a7f3d0; display:inline-block; margin-left:8px;">🟢 MUTUAL / NEUTRAL</span>'
             
             st.markdown(f"""
             <div style="{bg_color} border: 1px solid #e2e8f0; {border_style} border-radius: 12px; padding: 1.25rem; margin-bottom: 0.75rem; box-shadow: 0 4px 6px rgba(0,0,0,0.01);">
@@ -5158,7 +5248,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
             """)
 
             # ⚙️ Debate Sandbox Controls Panel
-            st.markdown('<div style="background: rgba(255, 255, 255, 0.6); border: 1px solid #e5e7eb; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02); color: #111827;">', unsafe_allow_html=True)
+            st.markdown('<div style="background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02); color: #ffffff;">', unsafe_allow_html=True)
             
             # Dropdown options
             flag_categories = []
@@ -5341,7 +5431,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
                 clause_b_val = "Section 14.3: Any disputes or controversies arising hereunder shall be submitted to binding arbitration in San Francisco, California under the rules of JAMS."
 
             # Inputs workspace
-            st.markdown('<div style="background: rgba(255, 255, 255, 0.6); border: 1px solid #e5e7eb; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02); color: #111827;">', unsafe_allow_html=True)
+            st.markdown('<div style="background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02); color: #ffffff;">', unsafe_allow_html=True)
             col1, col2 = st.columns(2)
             with col1:
                 clause_a_text = st.text_area(
@@ -5431,7 +5521,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
                 st.markdown("<h3 style='font-size:1.05rem; font-weight:600; color:#1f2937; margin-bottom:1rem;'>Semantic Integrity Report Card</h3>", unsafe_allow_html=True)
                 
                 render_html(f"""
-                <div class="conflict-card" style="background:#ffffff; border:1px solid #f0f1f3; border-radius:12px; padding:1.5rem; margin-bottom:1.25rem; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+                <div class="conflict-card" style="background: rgba(255, 255, 255, 0.05); border:1px solid #f0f1f3; border-radius:12px; padding:1.5rem; margin-bottom:1.25rem; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
                     <div style='display:flex;align-items:center; justify-content:space-between;margin-bottom:1rem;'>
                         <div style="font-size:1.05rem; font-weight:600; color:#111827;">⚡ {conflict.get('conflict', 'Semantic Contradiction')}</div>
                         <span style='display:inline-block;padding:2px 10px;border-radius:20px;
@@ -5440,10 +5530,10 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
                             {conflict.get('severity', 'High')}
                         </span>
                     </div>
-                    <div class="rule-box" style="border: 1px solid #f3f4f6; border-radius:8px; padding:12px; font-size:0.85rem; line-height:1.5; margin-bottom:10px; background:#fcfcfc; color:#1f2937;">
+                    <div class="rule-box" style="border: 1px solid rgba(255, 255, 255, 0.08); border-radius:8px; padding:12px; font-size:0.85rem; line-height:1.5; margin-bottom:10px; background:#fcfcfc; color:#1f2937;">
                         <strong>📋 Clause A Constraint:</strong> {conflict.get('rule_a', '')}
                     </div>
-                    <div class="rule-box" style="border: 1px solid #f3f4f6; border-radius:8px; padding:12px; font-size:0.85rem; line-height:1.5; margin-bottom:10px; background:#fcfcfc; color:#1f2937;">
+                    <div class="rule-box" style="border: 1px solid rgba(255, 255, 255, 0.08); border-radius:8px; padding:12px; font-size:0.85rem; line-height:1.5; margin-bottom:10px; background:#fcfcfc; color:#1f2937;">
                         <strong>📋 Clause B Constraint:</strong> {conflict.get('rule_b', '')}
                     </div>
                     <div style="font-size:0.85rem; color:#4b5563; line-height:1.5; background:#eff6ff; border-radius:8px; padding:12px; border-left:3px solid #3b82f6; margin-bottom:12px;">
@@ -5467,7 +5557,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
                             <div style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:#334155; letter-spacing:0.05em; display: flex; align-items: center; gap: 6px;">
                                 🔬 Z3 SMT Solver Propositional Verification Logic
                             </div>
-                            <span style="font-size:0.7rem; font-weight:700; background:#fee2e2; color:#991b1b; padding:2px 8px; border-radius:12px; border: 1px solid #fca5a5;">UNSAT CONFIRMED</span>
+                            <span style="font-size:0.7rem; font-weight:700; background: rgba(239, 68, 68, 0.2); color:#991b1b; padding:2px 8px; border-radius:12px; border: 1px solid #fca5a5;">UNSAT CONFIRMED</span>
                         </div>
                         """, unsafe_allow_html=True)
                         st.code(conflict["z3_code"], language="python")
@@ -5966,7 +6056,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown('<div style="background:#ffffff; border:1px solid #e5e7eb; padding:1.5rem; border-radius:12px; margin-bottom:1.5rem;">', unsafe_allow_html=True)
+        st.markdown('<div style="background: rgba(255, 255, 255, 0.05); border:1px solid #e5e7eb; padding:1.5rem; border-radius:12px; margin-bottom:1.5rem;">', unsafe_allow_html=True)
         st.markdown("<p style='font-size:0.85rem; color:#374151; font-weight:600; margin-bottom:0.75rem;'>✏️ Edit Profile & Professional Details</p>", unsafe_allow_html=True)
         col1, col2 = st.columns(2)
         with col1:
@@ -6028,7 +6118,7 @@ print(f"Contract Logical Consistency: {{verification_result}}") # Output: UNSAT!
         # Logout & GDPR Shredding Controls
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("<h2 style='font-size:1.15rem; font-weight:600; color:#111827; margin-bottom:0.5rem;'>🚪 Portal Navigation & Exit</h2>", unsafe_allow_html=True)
-        st.markdown('<div style="background:#ffffff; border:1px solid #e5e7eb; padding:1.5rem; border-radius:12px; margin-bottom:1.5rem; color:#111827;">', unsafe_allow_html=True)
+        st.markdown('<div style="background: rgba(255, 255, 255, 0.05); border:1px solid #e5e7eb; padding:1.5rem; border-radius:12px; margin-bottom:1.5rem; color:#111827;">', unsafe_allow_html=True)
         
         if st.button("🚪 Logout of Vault Session", use_container_width=True):
             if os.path.exists(SESSION_CACHE_FILE):
