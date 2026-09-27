@@ -69,7 +69,7 @@ function RiskTrendChart({ riskScore }: { riskScore: number }) {
       <path
         d={toPath(docsData, docsMax)}
         fill="none"
-        stroke="#38bdf8"
+        stroke="var(--accent)"
         strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -98,7 +98,7 @@ function RiskTrendChart({ riskScore }: { riskScore: number }) {
         </text>
       ))}
       {/* Legend */}
-      <circle cx={padL} cy={padT - 6} r={4} fill="#38bdf8" />
+      <circle cx={padL} cy={padT - 6} r={4} fill="var(--accent)" />
       <text x={padL + 8} y={padT - 2} fontSize={8} fill="#94a3b8">
         Docs Analyzed
       </text>
@@ -140,7 +140,7 @@ export default function DashboardPage() {
       trend: data.pages_trend,
       trendDir: "up" as const,
       icon: FileText,
-      color: "#38bdf8",
+      color: "var(--accent)",
     },
     {
       label: "Precedents Found",
@@ -148,7 +148,7 @@ export default function DashboardPage() {
       trend: data.precedents_trend,
       trendDir: "up" as const,
       icon: BookOpen,
-      color: "#818cf8",
+      color: "var(--secondary)",
     },
     {
       label: "Identified Risks",

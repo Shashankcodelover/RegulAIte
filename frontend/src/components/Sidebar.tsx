@@ -39,7 +39,7 @@ export default function Sidebar() {
               style={{
                 width: 34,
                 height: 34,
-                background: "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
+                background: "linear-gradient(135deg, #38bdf8 0%, #1E3A8A 100%)",
                 borderRadius: 8,
                 display: "flex",
                 alignItems: "center",
@@ -54,7 +54,7 @@ export default function Sidebar() {
                   fontSize: "1.0625rem",
                   fontWeight: 700,
                   letterSpacing: "-0.02em",
-                  color: "#e2e8f0",
+                  color: "#1E293B",
                 }}
               >
                 RegulAIte
@@ -138,7 +138,7 @@ export default function Sidebar() {
                   width: 28,
                   height: 28,
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, #38bdf8, #818cf8)",
+                  background: "linear-gradient(135deg, #38bdf8, #1E3A8A)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -150,14 +150,22 @@ export default function Sidebar() {
               >
                 {user.name[0]?.toUpperCase()}
               </div>
-              <div>
+              <div style={{ flex: 1 }}>
                 <div style={{ fontSize: "0.8rem", fontWeight: 600, color: "var(--text-primary)" }}>
                   {user.name}
                 </div>
-                <div style={{ fontSize: "0.65rem", color: "var(--text-muted)" }}>
+                <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "capitalize" }}>
                   {user.plan} plan
                 </div>
               </div>
+            </div>
+            <div style={{ display: "flex", gap: "0.5rem", flexDirection: "column" }}>
+              <Link href="/profile" style={{ textDecoration: "none", color: "var(--text-secondary)", fontSize: "0.75rem", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <div style={{ width: 14 }} /> Profile
+              </Link>
+              <Link href="/admin" style={{ textDecoration: "none", color: "var(--text-secondary)", fontSize: "0.75rem", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <div style={{ width: 14 }} /> Admin
+              </Link>
             </div>
             <button
               className="btn-ghost"
@@ -172,6 +180,7 @@ export default function Sidebar() {
                 fontSize: "0.75rem",
                 padding: "0.4rem 0.75rem",
                 justifyContent: "center",
+                marginTop: "0.25rem",
               }}
             >
               <LogOut size={13} />

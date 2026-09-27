@@ -30,7 +30,7 @@ const FEATURES = [
     icon: FileSearch,
     title: "BotDebate™",
     desc: "Two AI agents argue your clauses from opposing legal positions.",
-    color: "#818cf8",
+    color: "var(--secondary)",
   },
   {
     icon: ShieldCheck,
@@ -42,7 +42,7 @@ const FEATURES = [
     icon: Zap,
     title: "AutoFixer™",
     desc: "Split-screen diff view with AI-rewritten clauses in seconds.",
-    color: "#38bdf8",
+    color: "var(--accent)",
   },
   {
     icon: BookOpen,
@@ -54,7 +54,7 @@ const FEATURES = [
     icon: BarChart3,
     title: "Reciprocity Gauge",
     desc: "Proprietary speedometer that scores vendor vs. client advantage.",
-    color: "#c084fc",
+    color: "#1E3A8A",
   },
 ];
 
@@ -134,7 +134,7 @@ export default function LandingPage() {
           left: 0,
           right: 0,
           zIndex: 50,
-          background: "rgba(6,11,24,0.85)",
+          background: "rgba(255,255,255,0.85)",
           backdropFilter: "blur(20px)",
           borderBottom: "1px solid var(--border-subtle)",
           padding: "0.875rem 2rem",
@@ -148,20 +148,20 @@ export default function LandingPage() {
             style={{
               width: 32,
               height: 32,
-              background: "linear-gradient(135deg, #38bdf8, #818cf8)",
+              background: "var(--accent)",
               borderRadius: 8,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <Scale size={17} color="#0a0f1e" strokeWidth={2.5} />
+            <Scale size={17} color="white" strokeWidth={2.5} />
           </div>
           <span
             style={{
               fontSize: "1.0625rem",
               fontWeight: 700,
-              color: "#e2e8f0",
+              color: "var(--text-primary)",
               letterSpacing: "-0.02em",
             }}
           >
@@ -169,8 +169,8 @@ export default function LandingPage() {
           </span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-          <button className="btn-ghost" onClick={handleDemoMode} style={{ fontSize: "0.8125rem" }}>
-            Live Demo
+          <button className="btn-ghost" onClick={() => router.push("/text-demo")} style={{ fontSize: "0.8125rem" }}>
+            Text Demo
           </button>
           <button
             className="btn-primary"
@@ -212,7 +212,7 @@ export default function LandingPage() {
               width: 600,
               height: 600,
               background:
-                "radial-gradient(ellipse, rgba(56,189,248,0.07) 0%, transparent 70%)",
+                "radial-gradient(ellipse, rgba(14,156,116,0.07) 0%, transparent 70%)",
               pointerEvents: "none",
             }}
           />
@@ -224,7 +224,7 @@ export default function LandingPage() {
               width: 350,
               height: 350,
               background:
-                "radial-gradient(ellipse, rgba(129,140,248,0.06) 0%, transparent 70%)",
+                "radial-gradient(ellipse, rgba(30,58,138,0.06) 0%, transparent 70%)",
               pointerEvents: "none",
             }}
           />
@@ -238,14 +238,14 @@ export default function LandingPage() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(56,189,248,0.08)",
-              border: "1px solid rgba(56,189,248,0.2)",
+              background: "rgba(14,156,116,0.08)",
+              border: "1px solid rgba(14,156,116,0.2)",
               borderRadius: 999,
               padding: "0.3rem 0.875rem",
               marginBottom: "1.5rem",
             }}
           >
-            <Star size={12} color="#38bdf8" strokeWidth={2} />
+            <Star size={12} color="var(--accent)" strokeWidth={2} />
             <span style={{ fontSize: "0.75rem", color: "var(--accent)", fontWeight: 600 }}>
               5-Agent AI Orchestration Pipeline
             </span>
@@ -325,8 +325,8 @@ export default function LandingPage() {
                           style={{
                             fontSize: "0.68rem",
                             color: "var(--accent)",
-                            background: "rgba(56,189,248,0.08)",
-                            border: "1px solid rgba(56,189,248,0.2)",
+                            background: "rgba(14,156,116,0.08)",
+                            border: "1px solid rgba(14,156,116,0.2)",
                             borderRadius: 999,
                             padding: "0.2rem 0.6rem",
                           }}
@@ -565,9 +565,9 @@ export default function LandingPage() {
             margin: "0 auto",
             padding: "3rem 2rem",
             textAlign: "center",
-            border: "1px solid rgba(56,189,248,0.15)",
+            border: "1px solid rgba(14,156,116,0.15)",
             background:
-              "linear-gradient(135deg, rgba(56,189,248,0.06) 0%, rgba(129,140,248,0.05) 100%)",
+              "linear-gradient(135deg, rgba(14,156,116,0.06) 0%, rgba(30,58,138,0.05) 100%)",
           }}
         >
           <h2
@@ -601,10 +601,10 @@ export default function LandingPage() {
             </button>
             <button
               className="btn-ghost"
-              onClick={handleDemoMode}
+              onClick={() => router.push("/text-demo")}
               style={{ fontSize: "0.9rem", padding: "0.75rem 1.75rem" }}
             >
-              Try Demo →
+              Text Demo Mode →
             </button>
           </div>
         </motion.div>
@@ -618,9 +618,16 @@ export default function LandingPage() {
           textAlign: "center",
           color: "var(--text-muted)",
           fontSize: "0.78rem",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.5rem"
         }}
       >
-        © 2024 RegulAIte · AI Legal Simplifier & Extraction Engine · Built with a 5-agent pipeline
+        <div>© 2026 RegulAIte · AI Legal Simplifier & Extraction Engine</div>
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
+          <a href="/terms" style={{ color: "var(--text-secondary)", textDecoration: "underline" }}>Terms of Service</a>
+          <a href="/privacy" style={{ color: "var(--text-secondary)", textDecoration: "underline" }}>Privacy Policy</a>
+        </div>
       </footer>
     </div>
   );

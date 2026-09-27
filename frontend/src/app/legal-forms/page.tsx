@@ -100,7 +100,7 @@ export default function LegalFormsPage() {
                     height: 42,
                     borderRadius: 10,
                     background: "rgba(56,189,248,0.1)",
-                    border: "1px solid rgba(56,189,248,0.2)",
+                    border: "1px solid rgba(14,156,116,0.2)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

@@ -199,7 +199,7 @@ export default function CasesPage() {
                               p.relevance >= 80
                                 ? "var(--accent)"
                                 : p.relevance >= 60
-                                ? "#818cf8"
+                                ? "var(--secondary)"
                                 : "var(--text-muted)",
                           }}
                         />

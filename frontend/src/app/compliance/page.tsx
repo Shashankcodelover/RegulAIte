@@ -182,7 +182,7 @@ export default function CompliancePage() {
                   className="badge"
                   style={{
                     background: item.framework === "GDPR" ? "rgba(129,140,248,0.1)" : item.framework === "CCPA" ? "rgba(56,189,248,0.1)" : "rgba(16,185,129,0.1)",
-                    color: item.framework === "GDPR" ? "#818cf8" : item.framework === "CCPA" ? "var(--accent)" : "var(--success)",
+                    color: item.framework === "GDPR" ? "var(--secondary)" : item.framework === "CCPA" ? "var(--accent)" : "var(--success)",
                     border: "none",
                     flexShrink: 0,
                     marginTop: 1,

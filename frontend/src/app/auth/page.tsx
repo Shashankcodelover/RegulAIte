@@ -43,11 +43,7 @@ export default function AuthPage() {
   };
 
   const handleDemo = () => {
-    setUser({ name: "Demo User", hash: "demo", plan: "demo" });
-    setAnalysisData(MOCK_ANALYSIS);
-    setDemoMode(true);
-    setUploadedFileName("vendor_agreement_v3.pdf");
-    router.push("/dashboard");
+    router.push("/text-demo");
   };
 
   return (
@@ -69,7 +65,7 @@ export default function AuthPage() {
           transform: "translateX(-50%)",
           width: 500,
           height: 500,
-          background: "radial-gradient(ellipse, rgba(56,189,248,0.08) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(14,156,116,0.08) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
@@ -87,7 +83,7 @@ export default function AuthPage() {
             style={{
               width: 52,
               height: 52,
-              background: "linear-gradient(135deg, #38bdf8, #818cf8)",
+              background: "var(--accent)",
               borderRadius: 14,
               display: "flex",
               alignItems: "center",
@@ -96,7 +92,7 @@ export default function AuthPage() {
               boxShadow: "0 0 24px rgba(56,189,248,0.25)",
             }}
           >
-            <Scale size={26} color="#0a0f1e" strokeWidth={2.5} />
+            <Scale size={26} color="white" strokeWidth={2.5} />
           </div>
           <h1
             style={{
@@ -305,8 +301,8 @@ export default function AuthPage() {
             >
               <div
                 style={{
-                  background: "rgba(56,189,248,0.06)",
-                  border: "1px solid rgba(56,189,248,0.15)",
+                  background: "rgba(14,156,116,0.06)",
+                  border: "1px solid rgba(14,156,116,0.15)",
                   borderRadius: 10,
                   padding: "1rem",
                 }}
@@ -323,43 +319,19 @@ export default function AuthPage() {
                   }}
                 >
                   <Sparkles size={14} />
-                  Live Demo — High Risk Contract
+                  Frictionless Text Demo
                 </div>
                 <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                  Explore the full analysis dashboard using a real vendor agreement with 9 identified
-                  risk flags including uncapped liability, overbroad IP scope, and GDPR violations.
+                  Paste any contract text and test the AI pipeline instantly. No account required.
                 </p>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                {[
-                  "9 Red Flags identified (severity 5–10)",
-                  "GDPR compliance score: 34%",
-                  "BotDebate transcript (4 rounds)",
-                  "3 AutoFix rewrites ready",
-                  "5 matched precedent cases",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                      fontSize: "0.8rem",
-                      color: "var(--text-secondary)",
-                    }}
-                  >
-                    <span style={{ color: "var(--success)", fontWeight: 700 }}>✓</span>
-                    {item}
-                  </div>
-                ))}
               </div>
               <button
                 className="btn-primary"
                 onClick={handleDemo}
-                style={{ fontSize: "0.9rem", padding: "0.7rem", display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem" }}
+                style={{ fontSize: "0.9rem", padding: "0.7rem", display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", marginTop: "1rem" }}
               >
                 <Sparkles size={15} />
-                Launch Demo Dashboard
+                Launch Text Demo
               </button>
             </motion.div>
           )}
