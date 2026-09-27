@@ -284,3 +284,6 @@ RegulAIte is fully Docker-compatible. You can run it via a simple multi-containe
 ## 📁 Git Configuration & Readiness
 
 The repository is configured with a thorough `.gitignore` excluding all local cache files (`__pycache__`), virtual environments (`.venv`), temporary user configuration settings (`.env`), system files, and dynamic PDF uploads. It is **100% clean and ready to push** to your remote GitHub repository!
+
+<!-- QA visual polish applied -->
+
