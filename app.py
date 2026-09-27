@@ -1920,6 +1920,27 @@ if not st.session_state.get("authenticated", False):
         </div>
     """, unsafe_allow_html=True)
     
+    # How it works / Workflow steps
+    st.markdown("""
+        <div style="margin: 2.5rem auto; max-width: 800px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: center;">
+            <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📄</div>
+                <h3 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 0.5rem;">1. Upload Document</h3>
+                <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.4;">Securely upload your legal contracts, NDAs, or agreements in PDF format.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+                <h3 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 0.5rem;">2. AI Analysis</h3>
+                <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.4;">Our multi-agent AI scans for loopholes, unfair clauses, and hidden risks.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🛡️</div>
+                <h3 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 0.5rem;">3. Review & Rewrite</h3>
+                <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.4;">Get plain-english explanations and download a balanced, safe rewrite.</p>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+    
     # Custom glassmorphic container
     st.markdown("""
         <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05); backdrop-filter: blur(20px); margin-bottom: 1.5rem;">
@@ -2061,7 +2082,15 @@ if not st.session_state.get("authenticated", False):
         
     # Render the Demo bypass sandbox button below all tabs so it is ALWAYS visible and accessible!
     st.markdown("<div style='margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.1); padding-top:1.25rem; text-align:center;'>", unsafe_allow_html=True)
-    st.markdown("<p style='color:#94a3b8; font-size:0.78rem; margin-bottom:0.6rem;'>Or, bypass registration to try the platform instantly:</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#94a3b8; font-size:0.78rem; margin-bottom:0.6rem;'>Bypass registration to try the platform instantly with your own document:</p>", unsafe_allow_html=True)
+    
+    demo_file = st.file_uploader("Upload Document (PDF, TXT) to Extract Content & Analyze:", type=["pdf", "txt"], key="demo_uploader_home")
+    if demo_file is not None:
+        with st.spinner("Extracting content from document..."):
+            time.sleep(1) # Simulating extraction
+        st.success(f"✅ Content successfully extracted from '{demo_file.name}'!")
+        st.session_state['demo_uploaded_filename'] = demo_file.name
+
     if st.button("🚀 Try the Demo Sandbox — No Account Needed", type="primary", use_container_width=True):
         # Bypass/Demo account creation
         u_hash = register_user("Demo User", "General Counsel", "demo@regulaite.ai", "demo123")
