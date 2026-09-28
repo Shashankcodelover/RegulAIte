@@ -382,23 +382,27 @@ export default function LandingPage() {
           >
             <button
               className="btn-primary"
+              onClick={() => router.push("/auth")}
+              style={{ fontSize: "1rem", fontWeight: 600, padding: "0.75rem 2rem", borderRadius: "8px" }}
+            >
+              Sign Up / Login
+            </button>
+            <button
+              className="btn-ghost"
               onClick={handleDemoMode}
               style={{
-                fontSize: "0.9375rem",
+                fontSize: "1rem",
+                fontWeight: 600,
                 padding: "0.75rem 2rem",
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
+                border: "1px solid var(--border-subtle)",
+                borderRadius: "8px",
+                background: "white"
               }}
             >
-              Try Live Demo <ArrowRight size={16} />
-            </button>
-            <button
-              className="btn-ghost"
-              onClick={() => router.push("/auth")}
-              style={{ fontSize: "0.9375rem", padding: "0.75rem 2rem" }}
-            >
-              Sign In Free
+              ▶ Demo
             </button>
           </motion.div>
 
